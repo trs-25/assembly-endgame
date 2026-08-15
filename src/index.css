@@ -1,0 +1,97 @@
+body {
+    box-sizing: border-box;
+    background-color: #282726;
+}
+
+header {
+    /* background-color: green; */
+    max-inline-size: 352px;
+    margin: auto;
+    text-align: center;
+    margin-block-end: 35px;
+
+}
+
+header>h1 {
+    color: #F9F4DA;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+header>p {
+    color: #8E8E8E;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.languages {
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    flex-wrap: wrap;
+    max-inline-size: 300px;
+    margin: 70px auto;
+}
+
+.languages > span {
+    /* background-color: rgb(8, 5, 73); */
+    /* color: white; */
+    padding: 5px;
+    inline-size: auto;
+    border: solid 2px rgb(6, 73, 120);
+    border-radius: 7%;
+    font-size: 2.1vh;
+    font-weight: 500;
+}
+
+.word {
+    /* background-color: blue; */
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 5px;
+
+
+    font-size: 1.5rem;
+    margin-block-end: 70px;
+}
+
+.word>span {
+    /* background-color: green; */
+
+    color: white;
+    inline-size: 30px;
+    block-size: 30px;
+    border: solid 2px yellow;
+    border-radius: 20%;
+
+
+}
+
+.keyboard {
+    /* background-color: rgb(16, 255, 16); */
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    max-inline-size: 400px;
+    margin: auto;
+    flex-wrap: wrap;
+    
+    
+}
+
+.keyboard>button {
+    background-color: #fcbd29;
+    block-size: 35px;
+    inline-size: 35px;
+    text-align: center;
+    border: solid 2px greenyellow;
+    border-radius: 25%;
+    font-weight: 500;
+    font-size: 2vh;
+
+}
