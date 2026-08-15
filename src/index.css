@@ -34,7 +34,7 @@ header>p {
     margin: 70px auto;
 }
 
-.languages > span {
+.languages>span {
     /* background-color: rgb(8, 5, 73); */
     /* color: white; */
     padding: 5px;
@@ -80,8 +80,8 @@ header>p {
     max-inline-size: 400px;
     margin: auto;
     flex-wrap: wrap;
-    
-    
+
+
 }
 
 .keyboard>button {
@@ -89,9 +89,34 @@ header>p {
     block-size: 35px;
     inline-size: 35px;
     text-align: center;
-    border: solid 2px greenyellow;
+    border: solid 2px rgb(255, 247, 21);
     border-radius: 25%;
     font-weight: 500;
     font-size: 2vh;
 
+}
+
+.keyboard>button.correct {
+    background-color: greenyellow
+}
+
+.keyboard>button.incorrect {
+    background-color: red
+}
+
+section.status {
+    background-color: #282726;
+    text-align: center;
+    color: white;
+    max-inline-size: 400px;
+    margin: auto;
+
+}
+
+section.game-won {
+    background-color: greenyellow;
+}
+
+section.game-lost {
+    background-color: red;
 }
