@@ -34,15 +34,33 @@ header>p {
     margin: 70px auto;
 }
 
-.languages>span {
+.languages>span.language {
     /* background-color: rgb(8, 5, 73); */
     /* color: white; */
     padding: 5px;
+    position: relative;
     inline-size: auto;
     border: solid 2px rgb(6, 73, 120);
     border-radius: 7%;
     font-size: 2.1vh;
     font-weight: 500;
+}
+
+
+
+/* Dimmed overlay with skull on "lost" languages */
+.languages>span.language.lost::before {
+    content: "💀";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 0.85rem;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .word {

@@ -12,6 +12,9 @@ const App = () => {
   console.log(guesses)
 
   const maxGuesses = languages.length - 1;
+  const incorrectGuesses = guesses.filter(char => {
+    return !letters.includes(char)
+  }).length;
 
   const isGuessed = (character) => {
     return guesses.includes(character)
@@ -55,24 +58,32 @@ const App = () => {
 
   const keyboardElements = characters.map(char => {
     return <button
-      className={isGuessed(char) 
+      className={isGuessed(char)
         && clsx(
-        { correct: letters.includes(char) },
-        { incorrect: !letters.includes(char) }
-      )}
+          { correct: letters.includes(char) },
+          { incorrect: !letters.includes(char) }
+        )}
       key={char} onClick={() => onClickKeyboard(char)} >
       {char.toUpperCase()}
     </button>
   })
 
-  const languageElements = languages.map(l => {
+  const languageElements = languages.map((l, index) => {
 
     const style = {
       backgroundColor: l.backgroundColor,
       color: l.color
     }
 
-    return <span key={l.name} style={style} >{l.name}</span>
+    const className = clsx(
+      { language: true },
+      { lost: index < incorrectGuesses })
+
+
+    return <span key={l.name} style={style}
+      className={className} >
+      {l.name}
+    </span>
   })
 
   return (
