@@ -1,17 +1,33 @@
 import { useState } from "react"
 import { characters } from "./characters";
 import { languages } from "./languages";
+import clsx from "clsx";
 
 const App = () => {
 
-  const [word, setWord] = useState('shinobi')
+  const [word, setWord] = useState('car')
   const letters = word.split('');
 
   const [guesses, setGuesses] = useState([]);
   console.log(guesses)
 
+  const maxGuesses = languages.length - 1;
+
+  const isGuessed = (character) => {
+    return guesses.includes(character)
+  }
+
   const isCorrectGuess = (character) => {
-    return guesses.includes(character) && letters.includes(character)
+    return isGuessed(character) && letters.includes(character)
+  }
+
+
+  const isGameWon = () => {
+    return letters.every(l => guesses.includes(l))
+  }
+
+  const isGameLost = () => {
+    return guesses.length >= maxGuesses
   }
 
   const lettersElements = letters.map((l, index) => {
@@ -39,6 +55,11 @@ const App = () => {
 
   const keyboardElements = characters.map(char => {
     return <button
+      className={isGuessed(char) 
+        && clsx(
+        { correct: letters.includes(char) },
+        { incorrect: !letters.includes(char) }
+      )}
       key={char} onClick={() => onClickKeyboard(char)} >
       {char.toUpperCase()}
     </button>
@@ -62,6 +83,16 @@ const App = () => {
       </header>
 
       <main>
+
+        <section
+          className={clsx(
+            { 'status': true },
+            { 'game-won': isGameWon() },
+            { 'game-lost': isGameLost() })}>
+
+          <span>Status</span>
+
+        </section>
 
         <section className="languages">
           {languageElements}
