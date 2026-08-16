@@ -36,7 +36,7 @@ const App = () => {
 
   const lettersElements = letters.map((l, index) => {
     return <span key={index} >
-      {isCorrectGuess(l) ? l.toUpperCase() : ''}
+      {isCorrectGuess(l) || isGameLost() ? l.toUpperCase() : ''}
     </span>
   })
 
