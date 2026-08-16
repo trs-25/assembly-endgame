@@ -2,10 +2,11 @@ import { useState } from "react"
 import { characters } from "./characters";
 import { languages } from "./languages";
 import clsx from "clsx";
+import { getRandomWord } from "./words";
 
 const App = () => {
 
-  const [word, setWord] = useState('car')
+  const [word, setWord] = useState(() => getRandomWord())
   const letters = word.split('');
 
   const [guesses, setGuesses] = useState([]);
@@ -121,6 +122,11 @@ const App = () => {
 
   }
 
+  const startNewGame = () => {
+    setWord(getRandomWord());
+    setGuesses([]);
+  }
+
   return (
     <>
       <header>
@@ -150,6 +156,11 @@ const App = () => {
 
         <section className="keyboard">
           {keyboardElements}
+        </section>
+
+        <section className="new-game">
+          {(isGameLost() || isGameWon()) &&
+            <button onClick={startNewGame}>New Game</button>}
         </section>
 
       </main>

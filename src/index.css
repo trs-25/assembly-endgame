@@ -31,7 +31,7 @@ header>p {
     gap: 2px;
     flex-wrap: wrap;
     max-inline-size: 300px;
-    margin: 70px auto;
+    margin: 40px auto;
 }
 
 .languages>span.language {
@@ -99,6 +99,7 @@ header>p {
     margin: auto;
     flex-wrap: wrap;
 
+    margin-block-end: 30px;
 
 }
 
@@ -127,8 +128,8 @@ section.status {
     text-align: center;
     color: white;
     max-inline-size: 400px;
-    block-size: 100px;
-    margin: auto;
+    block-size: 60px;
+    margin-inline: auto;
     padding: 10px;
     align-content: center;
 
@@ -137,13 +138,13 @@ section.status {
 }
 
 section.status h2 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
 
 }
 
 section.status p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 100;
 }
 
@@ -153,4 +154,22 @@ section.status.game-won {
 
 section.status.game-lost {
     background-color: rgb(132, 43, 15);
+}
+
+section.new-game>button {
+    background-color: rgba(5, 223, 243, 0.727);
+    margin-inline: auto;
+    display: block;
+    padding: 15px;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    font-weight: 500;
+    color: #F9F4DA;
+
+    border-radius: 5%;
+
+
+    
+
 }
