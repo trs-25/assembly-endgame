@@ -30,7 +30,7 @@ const App = () => {
   }
 
   const isGameLost = () => {
-    return guesses.length >= maxGuesses
+    return incorrectGuesses >= maxGuesses
   }
 
   const lettersElements = letters.map((l, index) => {
@@ -63,7 +63,8 @@ const App = () => {
           { correct: letters.includes(char) },
           { incorrect: !letters.includes(char) }
         )}
-      key={char} onClick={() => onClickKeyboard(char)} >
+      key={char} onClick={() => onClickKeyboard(char)}
+      disabled={isGameLost() || isGameWon()} >
       {char.toUpperCase()}
     </button>
   })
@@ -86,6 +87,40 @@ const App = () => {
     </span>
   })
 
+
+  const getStatusMessage = () => {
+
+    if (guesses.length <= 0) return '';
+
+
+    else if (isGameLost()) {
+      return <>
+        <h2>You have lost all the high-level languages. </h2>
+        <p>Time to learn Assembly!</p>
+      </>
+    }
+
+    else if (isGameWon()) {
+      return <>
+        <h2>You have correctly guessed the word. </h2>
+        <p> Well done!</p>
+      </>
+    }
+
+    else if (incorrectGuesses > 0) {
+      const lastLanguageLost = languages[incorrectGuesses - 1].name
+      console.log(lastLanguageLost)
+
+      return <>
+        <h2>{`${lastLanguageLost} has left the game`}</h2>
+      </>
+    }
+
+
+
+
+  }
+
   return (
     <>
       <header>
@@ -101,7 +136,7 @@ const App = () => {
             { 'game-won': isGameWon() },
             { 'game-lost': isGameLost() })}>
 
-          <span>Status</span>
+          <span>{getStatusMessage()}</span>
 
         </section>
 

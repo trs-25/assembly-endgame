@@ -127,14 +127,30 @@ section.status {
     text-align: center;
     color: white;
     max-inline-size: 400px;
+    block-size: 100px;
     margin: auto;
+    padding: 10px;
+    align-content: center;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
 
-section.game-won {
-    background-color: greenyellow;
+section.status h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+
 }
 
-section.game-lost {
-    background-color: red;
+section.status p {
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+section.status.game-won {
+    background-color: rgb(48, 108, 187);
+}
+
+section.status.game-lost {
+    background-color: rgb(132, 43, 15);
 }
