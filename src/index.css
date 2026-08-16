@@ -31,18 +31,36 @@ header>p {
     gap: 2px;
     flex-wrap: wrap;
     max-inline-size: 300px;
-    margin: 70px auto;
+    margin: 40px auto;
 }
 
-.languages>span {
+.languages>span.language {
     /* background-color: rgb(8, 5, 73); */
     /* color: white; */
     padding: 5px;
+    position: relative;
     inline-size: auto;
     border: solid 2px rgb(6, 73, 120);
     border-radius: 7%;
     font-size: 2.1vh;
     font-weight: 500;
+}
+
+
+
+/* Dimmed overlay with skull on "lost" languages */
+.languages>span.language.lost::before {
+    content: "💀";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 0.85rem;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .word {
@@ -81,6 +99,7 @@ header>p {
     margin: auto;
     flex-wrap: wrap;
 
+    margin-block-end: 30px;
 
 }
 
@@ -109,14 +128,48 @@ section.status {
     text-align: center;
     color: white;
     max-inline-size: 400px;
-    margin: auto;
+    block-size: 60px;
+    margin-inline: auto;
+    padding: 10px;
+    align-content: center;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
 
-section.game-won {
-    background-color: greenyellow;
+section.status h2 {
+    font-size: 1rem;
+    font-weight: 700;
+
 }
 
-section.game-lost {
-    background-color: red;
+section.status p {
+    font-size: 0.9rem;
+    font-weight: 100;
+}
+
+section.status.game-won {
+    background-color: rgb(48, 108, 187);
+}
+
+section.status.game-lost {
+    background-color: rgb(132, 43, 15);
+}
+
+section.new-game>button {
+    background-color: rgba(5, 223, 243, 0.727);
+    margin-inline: auto;
+    display: block;
+    padding: 15px;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    font-weight: 500;
+    color: #F9F4DA;
+
+    border-radius: 5%;
+
+
+    
+
 }
