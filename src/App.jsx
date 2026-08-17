@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { characters } from "./characters";
 import { languages } from "./languages";
 import clsx from "clsx";
@@ -6,11 +6,37 @@ import { getRandomWord } from "./words";
 
 const App = () => {
 
-  const [word, setWord] = useState(() => getRandomWord())
+
+  const [word, setWord] = useState(getRandomWord())
   const letters = word.split('');
+  // console.log(word)
+
+  const getHints = () => {
+    const totalHints = Math.floor(letters.length / 3)
+
+    let hints = []
+
+    for (let i = 0; i < totalHints; ++i) {
+      const random = letters[Math.floor(Math.random() * letters.length)];
+
+      if (!hints.includes(random))
+        hints.push(random)
+    }
+
+    console.log(hints)
+
+
+    return hints;
+  }
+
+
 
   const [guesses, setGuesses] = useState([]);
-  console.log(guesses)
+
+  useEffect(() => {
+    setGuesses(() => getHints())
+  }, [word])
+
 
   const maxGuesses = languages.length - 1;
   const incorrectGuesses = guesses.filter(char => {
@@ -40,11 +66,7 @@ const App = () => {
     </span>
   })
 
-  const onClickKeyboard = (character) => {
-    console.log(`${character} clicked`)
-    addToGuesses(character)
-
-  }
+  
 
 
 
@@ -55,6 +77,12 @@ const App = () => {
         return [...prevGuesses, character]
       })
     }
+  }
+
+  const onClickKeyboard = (character) => {
+    // console.log(`${character} clicked`)
+    addToGuesses(character)
+
   }
 
   const keyboardElements = characters.map(char => {
@@ -110,7 +138,7 @@ const App = () => {
 
     else if (incorrectGuesses > 0) {
       const lastLanguageLost = languages[incorrectGuesses - 1].name
-      console.log(lastLanguageLost)
+      // console.log(lastLanguageLost)
 
       return <>
         <h2>{`${lastLanguageLost} has left the game`}</h2>
@@ -123,8 +151,8 @@ const App = () => {
   }
 
   const startNewGame = () => {
-    setWord(getRandomWord());
-    setGuesses([]);
+
+    setWord(() => getRandomWord());
   }
 
   return (
